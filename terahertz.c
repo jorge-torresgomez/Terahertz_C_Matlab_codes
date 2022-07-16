@@ -178,6 +178,13 @@ double pathLossSkin(double comm_dist_Skin, double Freq_THz, double carrier_lambd
     return convertTodB(L_abs * L_spr);
 }
 
+
+void doppler(const double Freq_THz, const double Comm_dist, const double Skin_thickness, const double Tissue_thickness, const double Vessel_thickness, double *doppler_real,double *doppler_imag)
+{
+    *doppler_real=1;
+    *doppler_imag=0;
+}
+
 /**
      * @brief convert power in the units of Watts to decibels
      * 
