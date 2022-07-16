@@ -4,8 +4,8 @@
 #include <complex.h>
 
 //functions
-//main function to compute the channel gain
-double signalAttenuation(const double Freq_THz, const double Comm_dist, const double Skin_thickness, const double Tissue_thickness, const double Vessel_thickness);
+//main function to compute the path loss in dB
+double pathLoss(const double Freq_THz, const double Comm_dist, const double Skin_thickness, const double Tissue_thickness, const double Vessel_thickness);
 
 //evaluates the path loss in the vessel in dB
 double pathLossVessel(double comm_dist_Vessel, double Freq_THz, double carrier_lambda);

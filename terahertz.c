@@ -51,14 +51,14 @@ const double c_0 = 299792458.0; //speed of light in vacuum
 
 
 /**
-     * @brief main function to compute the channel gain
+     * @brief main function to compute the path loss in dB
      * 
      * @param Comm_dist as the distance between the nanosensor and the Gateway 
      * @param Freq_THz as the carrier frequency in the units of Hertz 
      * @param Skin_thickness as the thickness of the Skin in the units of meters 
      * @return double 
      */
-double signalAttenuation(const double Freq_THz, const double Comm_dist, const double Skin_thickness, const double Tissue_thickness, const double Vessel_thickness)
+double pathLoss(const double Freq_THz, const double Comm_dist, const double Skin_thickness, const double Tissue_thickness, const double Vessel_thickness)
 {   
     //spatial parameters
     //angle between the nanosensor and the gateway
