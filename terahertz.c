@@ -56,6 +56,8 @@ const double c_0 = 299792458.0; //speed of light in vacuum
      * @param Comm_dist as the distance between the nanosensor and the Gateway 
      * @param Freq_THz as the carrier frequency in the units of Hertz 
      * @param Skin_thickness as the thickness of the Skin in the units of meters 
+     * @param Tissue_thickness as the thickness of the Tissue in the units of meters
+     * @param Vessel_thickness as the thickness of the Vessel in the units of meters
      * @return double 
      */
 double pathLoss(const double Freq_THz, const double Comm_dist, const double Skin_thickness, const double Tissue_thickness, const double Vessel_thickness)
@@ -178,11 +180,22 @@ double pathLossSkin(double comm_dist_Skin, double Freq_THz, double carrier_lambd
     return convertTodB(L_abs * L_spr);
 }
 
-
-void doppler(const double Freq_THz, const double Comm_dist, const double Skin_thickness, const double Tissue_thickness, const double Vessel_thickness, double *doppler_real,double *doppler_imag)
+/**
+     * @brief main function to compute the path loss in dB
+     * 
+     * @param Comm_dist as the distance between the nanosensor and the Gateway 
+     * @param Freq_THz as the carrier frequency in the units of Hertz 
+     * @param Skin_thickness as the thickness of the Skin in the units of meters 
+     * @param Tissue_thickness as the thickness of the Tissue in the units of meters
+     * @param Vessel_thickness as the thickness of the Vessel in the units of meters
+     * @return double 
+     */
+void doppler(const double Freq_THz, const double Comm_dist, const double Skin_thickness, const double Tissue_thickness, const double Vessel_thickness, double blood_speed, double *nu_doppler)
 {
-    *doppler_real=1;
-    *doppler_imag=0;
+    //angle between the nanosensor and the gateway
+    double sin_angle=(Skin_thickness+Tissue_thickness+Vessel_thickness)/Comm_dist;
+    double cos_angle=sqrt(1-pow(sin_angle,2));
+    *nu_doppler=blood_speed*cos_angle*Freq_THz/c_0;    
 }
 
 /**
