@@ -26,7 +26,7 @@ MEXFUNCTION_LINKAGE void mexFunction(int32_T nlhs, mxArray *plhs[],
 
 emlrtCTX mexFunctionCreateRootTLS(void);
 
-void transceiver_interface_mexFunction(int32_T nlhs, mxArray *plhs[4],
-                                       int32_T nrhs, const mxArray *prhs[9]);
+void transceiver_interface_mexFunction(int32_T nlhs, mxArray *plhs[5],
+                                       int32_T nrhs, const mxArray *prhs[10]);
 
 /* End of code generation (_coder_transceiver_interface_mex.h) */

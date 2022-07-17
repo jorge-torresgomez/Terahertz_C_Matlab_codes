@@ -5,7 +5,7 @@
  * File: _coder_transceiver_interface_mex.c
  *
  * MATLAB Coder version            : 5.3
- * C/C++ source code generated on  : 17-Jul-2022 12:22:44
+ * C/C++ source code generated on  : 17-Jul-2022 18:58:57
  */
 
 /* Include Files */
@@ -45,29 +45,29 @@ emlrtCTX mexFunctionCreateRootTLS(void)
 
 /*
  * Arguments    : int32_T nlhs
- *                mxArray *plhs[4]
+ *                mxArray *plhs[5]
  *                int32_T nrhs
- *                const mxArray *prhs[9]
+ *                const mxArray *prhs[10]
  * Return Type  : void
  */
-void unsafe_transceiver_interface_mexFunction(int32_T nlhs, mxArray *plhs[4],
+void unsafe_transceiver_interface_mexFunction(int32_T nlhs, mxArray *plhs[5],
                                               int32_T nrhs,
-                                              const mxArray *prhs[9])
+                                              const mxArray *prhs[10])
 {
   emlrtStack st = {
       NULL, /* site */
       NULL, /* tls */
       NULL  /* prev */
   };
-  const mxArray *outputs[4];
+  const mxArray *outputs[5];
   int32_T b_nlhs;
   st.tls = emlrtRootTLSGlobal;
   /* Check for proper number of arguments. */
-  if (nrhs != 9) {
-    emlrtErrMsgIdAndTxt(&st, "EMLRT:runTime:WrongNumberOfInputs", 5, 12, 9, 4,
+  if (nrhs != 10) {
+    emlrtErrMsgIdAndTxt(&st, "EMLRT:runTime:WrongNumberOfInputs", 5, 12, 10, 4,
                         21, "transceiver_interface");
   }
-  if (nlhs > 4) {
+  if (nlhs > 5) {
     emlrtErrMsgIdAndTxt(&st, "EMLRT:runTime:TooManyOutputArguments", 3, 4, 21,
                         "transceiver_interface");
   }

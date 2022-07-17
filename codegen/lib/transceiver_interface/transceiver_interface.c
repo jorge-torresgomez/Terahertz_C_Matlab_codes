@@ -5,7 +5,7 @@
  * File: transceiver_interface.c
  *
  * MATLAB Coder version            : 5.3
- * C/C++ source code generated on  : 17-Jul-2022 12:22:44
+ * C/C++ source code generated on  : 17-Jul-2022 18:58:57
  */
 
 /* Include Files */
@@ -16,35 +16,36 @@
 /* Function Definitions */
 /*
  * Arguments    : double Freq_THz
- *                double Comm_dist_init
+ *                double dist_init_x
  *                double Skin_thickness
  *                double Tissue_thickness
  *                double Vessel_thickness
  *                double blood_speed
  *                double mod_order_int
- *                const double bits[220000]
+ *                const double bits[128000]
+ *                double bit_rate
  *                double A
- *                double Const_Tx_real[220000]
- *                double Const_Tx_imag[220000]
- *                double Const_Rx_real[220000]
- *                double Const_Rx_imag[220000]
+ *                double Const_Tx_real[128000]
+ *                double Const_Tx_imag[128000]
+ *                double Const_Rx_real[128000]
+ *                double Const_Rx_imag[128000]
+ *                double nanosensor_pos_x[128000]
  * Return Type  : void
  */
-void transceiver_interface(double Freq_THz, double Comm_dist_init,
-                           double Skin_thickness, double Tissue_thickness,
-                           double Vessel_thickness, double blood_speed,
-                           double mod_order_int, const double bits[220000],
-                           double A, double Const_Tx_real[220000],
-                           double Const_Tx_imag[220000],
-                           double Const_Rx_real[220000],
-                           double Const_Rx_imag[220000])
+void transceiver_interface(
+    double Freq_THz, double dist_init_x, double Skin_thickness,
+    double Tissue_thickness, double Vessel_thickness, double blood_speed,
+    double mod_order_int, const double bits[128000], double bit_rate, double A,
+    double Const_Tx_real[128000], double Const_Tx_imag[128000],
+    double Const_Rx_real[128000], double Const_Rx_imag[128000],
+    double nanosensor_pos_x[128000])
 {
-  memset(&Const_Tx_real[0], 0, 220000U * sizeof(double));
-  memset(&Const_Tx_imag[0], 0, 220000U * sizeof(double));
-  transceiver(Freq_THz, Comm_dist_init, Skin_thickness, Tissue_thickness,
-              Vessel_thickness, blood_speed, mod_order_int, &bits[0], 220000.0,
-              A, &Const_Tx_real[0], &Const_Tx_imag[0], &Const_Rx_real[0],
-              &Const_Rx_imag[0]);
+  memset(&Const_Tx_real[0], 0, 128000U * sizeof(double));
+  memset(&Const_Tx_imag[0], 0, 128000U * sizeof(double));
+  transceiver(Freq_THz, dist_init_x, Skin_thickness, Tissue_thickness,
+              Vessel_thickness, blood_speed, mod_order_int, &bits[0], 128000.0,
+              bit_rate, A, &Const_Tx_real[0], &Const_Tx_imag[0],
+              &Const_Rx_real[0], &Const_Rx_imag[0], &nanosensor_pos_x[0]);
 }
 
 /*

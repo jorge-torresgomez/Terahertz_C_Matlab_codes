@@ -114,7 +114,7 @@ double pathLossVessel(double comm_dist_Vessel, double Freq_THz, double carrier_l
     //computing the absorption Loss
     double L_abs = exp(mu_abs * comm_dist_Vessel);
    
-    return convertTodB(L_abs * L_spr);
+    return convertWattTodB(L_abs * L_spr);
 
 }
 
@@ -146,7 +146,7 @@ double pathLossTissue(double comm_dist_Tissue, double Freq_THz, double carrier_l
     //computing the absorption Loss
     double L_abs = exp(mu_abs * comm_dist_Tissue);
 
-    return convertTodB(L_abs * L_spr);
+    return convertWattTodB(L_abs * L_spr);
 }
 
 /**
@@ -177,7 +177,7 @@ double pathLossSkin(double comm_dist_Skin, double Freq_THz, double carrier_lambd
     //computing the absorption Loss
     double L_abs = exp(mu_abs * comm_dist_Skin);
 
-    return convertTodB(L_abs * L_spr);
+    return convertWattTodB(L_abs * L_spr);
 }
 
 /**
@@ -191,18 +191,19 @@ double pathLossSkin(double comm_dist_Skin, double Freq_THz, double carrier_lambd
      * @param blood_speed as the nanosensor speed in the vessel
      * @return double array for the Doppler term nu
      */
-void doppler(const double Freq_THz, const double Comm_dist, const double Skin_thickness, const double Tissue_thickness, const double Vessel_thickness, const double blood_speed, double *nu_doppler)
+double doppler(const double Freq_THz, const double Comm_dist, const double Skin_thickness, const double Tissue_thickness, const double Vessel_thickness, const double blood_speed)
 {
     //angle between the nanosensor and the gateway
     double sin_angle=(Skin_thickness+Tissue_thickness+Vessel_thickness)/Comm_dist;
     double cos_angle=sqrt(1-pow(sin_angle,2));
-    *nu_doppler=blood_speed*cos_angle*Freq_THz/c_0;    
+    //doppler term
+    return blood_speed*cos_angle*Freq_THz/c_0;    
 }
 
 /**
      * @brief main function to compute the path loss in dB
      * 
-     * @param Comm_dist as the distance between the nanosensor and the Gateway 
+     * @param dist_init_x as the initial nanosensor distance from the center in the direction of movement
      * @param Freq_THz as the carrier frequency in the units of Hertz 
      * @param Skin_thickness as the thickness of the Skin in the units of meters 
      * @param Tissue_thickness as the thickness of the Tissue in the units of meters
@@ -211,19 +212,30 @@ void doppler(const double Freq_THz, const double Comm_dist, const double Skin_th
      * @param mod_order as the modulation order: 2-BPSK, 4-QPSK
      * @param in_bits as the sequence of bits to communicate   
      * @param total_bits as the total of bits to communicate
+     * @param bit_rate as the bit rate for transmissions
      * @param A as the amplitude of emmited constellation points
      * @return Const_Tx_real real component of the emmited constellation points
      * @return Const_Tx_real imag component of the emmited constellation points
      * @return Const_Rx_real real component of the received constellation points
      * @return Const_Rx_real imag component of the received constellation points
      */
-void transceiver(const double Freq_THz, const double Comm_dist_init, const double Skin_thickness, const double Tissue_thickness, const double Vessel_thickness, const double blood_speed, const int mod_order, const double *in_bits, const int total_bits, const double A, double *Const_Tx_real, double *Const_Tx_imag, double *Const_Rx_real, double *Const_Rx_imag)
+void transceiver(const double Freq_THz, const double dist_init_x, const double Skin_thickness, const double Tissue_thickness, const double Vessel_thickness, const double blood_speed, const int mod_order, const double *in_bits, const int total_bits, const double bit_rate, const double A, double *Const_Tx_real, double *Const_Tx_imag, double *Const_Rx_real, double *Const_Rx_imag, double *nanosensor_pos_x)
 {
     int i=0;
-    //BPSK
-    if(mod_order==2 || mod_order==0)
+    double comm_dist = 0;//to evalute the distance between the nanosensor and the gateway with time
+    double path_Loss = 0;//to evaluate the path Loss with time
+    double g_d = 0;//to evaluate the channel gain with time
+    double nu = 0; //to evaluate the doppler term nu
+    double doppler_phase = 0; //to evaluate the doppler phase
+    double t = 0; //time evolution of the process
+    double mag = 0; //to evaluate the magnitude of received constellation points
+    double theta = 0; //to evaluate the phase of received constellation points
+
+    for (i=0; i<total_bits; i++)
     {
-        for (i=0; i<total_bits; i++)
+        //conforming the constellation
+        //BPSK
+        if(mod_order==2 || mod_order==0)
         {
             if(in_bits[i]<1)
             {
@@ -232,18 +244,64 @@ void transceiver(const double Freq_THz, const double Comm_dist_init, const doubl
             else
             {
                 Const_Tx_real[i] = A;
-            }
+            }           
 
         }
+
+        //channel transmission
+        //computing the nanosensor position in the x axis
+        nanosensor_pos_x[i] = -dist_init_x + blood_speed*i/bit_rate;
+        //computing the comm. distance between nanosensor and the gateway with time
+        comm_dist=sqrt(pow(nanosensor_pos_x[i],2)+pow(Skin_thickness+Tissue_thickness+Vessel_thickness,2));
+        //computing the path Loss
+        path_Loss=pathLoss(Freq_THz, comm_dist, Skin_thickness, Tissue_thickness, Vessel_thickness);
+        //computing the doppler effect
+        nu=doppler(Freq_THz, comm_dist, Skin_thickness, Tissue_thickness, Vessel_thickness,blood_speed);
+        doppler_phase=2*PI*nu*t;
+        //time evolution of the process
+        t=t+i/bit_rate;
+        //transforming the emmited constellation from Polar to 
+        //evaluating the received constellation
+        //Const_Rx_real[i] = convertdBToWatt(-path_Loss)*Const_Tx_real[i]*cos(doppler_phase);
+        //Const_Rx_imag[i] = convertdBToWatt(-path_Loss)*Const_Tx_real[i]*sin(doppler_phase);
+        convertCart2Polar(Const_Tx_real[i],Const_Tx_imag[i],&mag,&theta);
+        Const_Rx_real[i] = mag*convertdBToWatt(-path_Loss)*cos(theta+doppler_phase*t);
+        Const_Rx_imag[i] = mag*convertdBToWatt(-path_Loss)*sin(theta+doppler_phase*t);
     }
 }
+
+void convertCart2Polar(const double x, const double y, double *r, double *theta)
+{
+    //magnitude
+    *r=sqrt(pow(x,2)+pow(y,2));
+    //angle
+    *theta=atan(y/x);
+    //looking for the proper quadrant
+    if(x<0 && y>=0)//second quadrant
+        *theta = PI + *theta;
+    if(x<0 && y<0)//third quadrant
+        *theta = PI - *theta;
+}
+
 /**
      * @brief convert power in the units of Watts to decibels
      * 
      * @param x as an input in the units of Watts
      * @return double in decibels
      */
-double convertTodB(double x)
+double convertWattTodB(const double x)
 {
     return 10 * log10(x);
 }
+
+/**
+     * @brief convert dB to the units of power in Watts
+     * 
+     * @param x as an input in decibels
+     * @return double in the units of Watts
+     */
+double convertdBToWatt(const double x)
+{
+    return pow(10,x/10);
+}
+

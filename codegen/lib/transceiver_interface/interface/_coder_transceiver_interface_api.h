@@ -5,7 +5,7 @@
  * File: _coder_transceiver_interface_api.h
  *
  * MATLAB Coder version            : 5.3
- * C/C++ source code generated on  : 17-Jul-2022 12:22:44
+ * C/C++ source code generated on  : 17-Jul-2022 18:58:57
  */
 
 #ifndef _CODER_TRANSCEIVER_INTERFACE_API_H
@@ -25,17 +25,16 @@ extern "C" {
 #endif
 
 /* Function Declarations */
-void transceiver_interface(real_T Freq_THz, real_T Comm_dist_init,
-                           real_T Skin_thickness, real_T Tissue_thickness,
-                           real_T Vessel_thickness, real_T blood_speed,
-                           real_T mod_order_int, real_T bits[220000], real_T A,
-                           real_T Const_Tx_real[220000],
-                           real_T Const_Tx_imag[220000],
-                           real_T Const_Rx_real[220000],
-                           real_T Const_Rx_imag[220000]);
+void transceiver_interface(
+    real_T Freq_THz, real_T dist_init_x, real_T Skin_thickness,
+    real_T Tissue_thickness, real_T Vessel_thickness, real_T blood_speed,
+    real_T mod_order_int, real_T bits[128000], real_T bit_rate, real_T A,
+    real_T Const_Tx_real[128000], real_T Const_Tx_imag[128000],
+    real_T Const_Rx_real[128000], real_T Const_Rx_imag[128000],
+    real_T nanosensor_pos_x[128000]);
 
-void transceiver_interface_api(const mxArray *const prhs[9], int32_T nlhs,
-                               const mxArray *plhs[4]);
+void transceiver_interface_api(const mxArray *const prhs[10], int32_T nlhs,
+                               const mxArray *plhs[5]);
 
 void transceiver_interface_atexit(void);
 
