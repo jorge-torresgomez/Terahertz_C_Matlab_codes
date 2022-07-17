@@ -211,14 +211,31 @@ void doppler(const double Freq_THz, const double Comm_dist, const double Skin_th
      * @param mod_order as the modulation order: 2-BPSK, 4-QPSK
      * @param in_bits as the sequence of bits to communicate   
      * @param total_bits as the total of bits to communicate
+     * @param A as the amplitude of emmited constellation points
      * @return Const_Tx_real real component of the emmited constellation points
      * @return Const_Tx_real imag component of the emmited constellation points
      * @return Const_Rx_real real component of the received constellation points
      * @return Const_Rx_real imag component of the received constellation points
      */
-void transceiver(const double Freq_THz, const double Comm_dist_init, const double Skin_thickness, const double Tissue_thickness, const double Vessel_thickness, const double blood_speed, const int mod_order, const double *in_bits, const int total_bits, double *Const_Tx_real, double *Const_Tx_imag, double *Const_Rx_real, double *Const_Rx_imag)
+void transceiver(const double Freq_THz, const double Comm_dist_init, const double Skin_thickness, const double Tissue_thickness, const double Vessel_thickness, const double blood_speed, const int mod_order, const double *in_bits, const int total_bits, const double A, double *Const_Tx_real, double *Const_Tx_imag, double *Const_Rx_real, double *Const_Rx_imag)
 {
-    
+    int i=0;
+    //BPSK
+    if(mod_order==2 || mod_order==0)
+    {
+        for (i=0; i<total_bits; i++)
+        {
+            if(in_bits[i]<1)
+            {
+                Const_Tx_real[i] = -A;
+            }
+            else
+            {
+                Const_Tx_real[i] = A;
+            }
+
+        }
+    }
 }
 /**
      * @brief convert power in the units of Watts to decibels

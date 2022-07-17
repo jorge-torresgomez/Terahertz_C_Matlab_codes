@@ -21,7 +21,7 @@
 #include <string.h>
 
 /* Function Declarations */
-void transceiver_interface_api(const mxArray *const prhs[8], int32_T nlhs,
+void transceiver_interface_api(const mxArray *const prhs[9], int32_T nlhs,
                                const mxArray *plhs[4]);
 
 /* End of code generation (_coder_transceiver_interface_api.h) */

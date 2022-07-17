@@ -5,7 +5,7 @@
  * File: _coder_transceiver_interface_mex.c
  *
  * MATLAB Coder version            : 5.3
- * C/C++ source code generated on  : 17-Jul-2022 11:18:25
+ * C/C++ source code generated on  : 17-Jul-2022 12:22:44
  */
 
 /* Include Files */
@@ -47,12 +47,12 @@ emlrtCTX mexFunctionCreateRootTLS(void)
  * Arguments    : int32_T nlhs
  *                mxArray *plhs[4]
  *                int32_T nrhs
- *                const mxArray *prhs[8]
+ *                const mxArray *prhs[9]
  * Return Type  : void
  */
 void unsafe_transceiver_interface_mexFunction(int32_T nlhs, mxArray *plhs[4],
                                               int32_T nrhs,
-                                              const mxArray *prhs[8])
+                                              const mxArray *prhs[9])
 {
   emlrtStack st = {
       NULL, /* site */
@@ -63,8 +63,8 @@ void unsafe_transceiver_interface_mexFunction(int32_T nlhs, mxArray *plhs[4],
   int32_T b_nlhs;
   st.tls = emlrtRootTLSGlobal;
   /* Check for proper number of arguments. */
-  if (nrhs != 8) {
-    emlrtErrMsgIdAndTxt(&st, "EMLRT:runTime:WrongNumberOfInputs", 5, 12, 8, 4,
+  if (nrhs != 9) {
+    emlrtErrMsgIdAndTxt(&st, "EMLRT:runTime:WrongNumberOfInputs", 5, 12, 9, 4,
                         21, "transceiver_interface");
   }
   if (nlhs > 4) {

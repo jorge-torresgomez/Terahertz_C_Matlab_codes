@@ -5,7 +5,7 @@
  * File: main.c
  *
  * MATLAB Coder version            : 5.3
- * C/C++ source code generated on  : 17-Jul-2022 11:18:25
+ * C/C++ source code generated on  : 17-Jul-2022 12:22:44
  */
 
 /*************************************************************************/
@@ -39,11 +39,28 @@
 #include "transceiver_interface_terminate.h"
 
 /* Function Declarations */
+static void argInit_220000x1_real_T(double result[220000]);
+
 static double argInit_real_T(void);
 
 static void main_transceiver_interface(void);
 
 /* Function Definitions */
+/*
+ * Arguments    : double result[220000]
+ * Return Type  : void
+ */
+static void argInit_220000x1_real_T(double result[220000])
+{
+  int idx0;
+  /* Loop over the array to initialize each element. */
+  for (idx0 = 0; idx0 < 220000; idx0++) {
+    /* Set the value of the array element.
+Change this value to the value that the application requires. */
+    result[idx0] = argInit_real_T();
+  }
+}
+
 /*
  * Arguments    : void
  * Return Type  : double
@@ -59,19 +76,21 @@ static double argInit_real_T(void)
  */
 static void main_transceiver_interface(void)
 {
-  double Const_Rx_imag;
-  double Const_Rx_real;
-  double Const_Tx_imag;
-  double Const_Tx_real;
+  static double Const_Rx_imag[220000];
+  static double Const_Rx_real[220000];
+  static double Const_Tx_imag[220000];
+  static double Const_Tx_real[220000];
+  static double dv[220000];
   double Freq_THz_tmp;
   /* Initialize function 'transceiver_interface' input arguments. */
   Freq_THz_tmp = argInit_real_T();
-  /* Initialize function input argument 'mod_order'. */
+  /* Initialize function input argument 'bits'. */
   /* Call the entry-point 'transceiver_interface'. */
+  argInit_220000x1_real_T(dv);
   transceiver_interface(Freq_THz_tmp, Freq_THz_tmp, Freq_THz_tmp, Freq_THz_tmp,
-                        Freq_THz_tmp, Freq_THz_tmp, Freq_THz_tmp,
-                        &Const_Tx_real, &Const_Tx_imag, &Const_Rx_real,
-                        &Const_Rx_imag);
+                        Freq_THz_tmp, Freq_THz_tmp, Freq_THz_tmp, dv,
+                        Freq_THz_tmp, Const_Tx_real, Const_Tx_imag,
+                        Const_Rx_real, Const_Rx_imag);
 }
 
 /*

@@ -5,7 +5,7 @@
  * File: _coder_transceiver_interface_api.h
  *
  * MATLAB Coder version            : 5.3
- * C/C++ source code generated on  : 17-Jul-2022 11:18:25
+ * C/C++ source code generated on  : 17-Jul-2022 12:22:44
  */
 
 #ifndef _CODER_TRANSCEIVER_INTERFACE_API_H
@@ -28,11 +28,13 @@ extern "C" {
 void transceiver_interface(real_T Freq_THz, real_T Comm_dist_init,
                            real_T Skin_thickness, real_T Tissue_thickness,
                            real_T Vessel_thickness, real_T blood_speed,
-                           real_T bits, real_T *Const_Tx_real,
-                           real_T *Const_Tx_imag, real_T *Const_Rx_real,
-                           real_T *Const_Rx_imag);
+                           real_T mod_order_int, real_T bits[220000], real_T A,
+                           real_T Const_Tx_real[220000],
+                           real_T Const_Tx_imag[220000],
+                           real_T Const_Rx_real[220000],
+                           real_T Const_Rx_imag[220000]);
 
-void transceiver_interface_api(const mxArray *const prhs[8], int32_T nlhs,
+void transceiver_interface_api(const mxArray *const prhs[9], int32_T nlhs,
                                const mxArray *plhs[4]);
 
 void transceiver_interface_atexit(void);

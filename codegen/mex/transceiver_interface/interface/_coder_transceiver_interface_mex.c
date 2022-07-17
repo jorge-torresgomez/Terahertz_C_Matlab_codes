@@ -38,7 +38,7 @@ emlrtCTX mexFunctionCreateRootTLS(void)
 }
 
 void transceiver_interface_mexFunction(int32_T nlhs, mxArray *plhs[4],
-                                       int32_T nrhs, const mxArray *prhs[8])
+                                       int32_T nrhs, const mxArray *prhs[9])
 {
   emlrtStack st = {
       NULL, /* site */
@@ -49,8 +49,8 @@ void transceiver_interface_mexFunction(int32_T nlhs, mxArray *plhs[4],
   int32_T b_nlhs;
   st.tls = emlrtRootTLSGlobal;
   /* Check for proper number of arguments. */
-  if (nrhs != 8) {
-    emlrtErrMsgIdAndTxt(&st, "EMLRT:runTime:WrongNumberOfInputs", 5, 12, 8, 4,
+  if (nrhs != 9) {
+    emlrtErrMsgIdAndTxt(&st, "EMLRT:runTime:WrongNumberOfInputs", 5, 12, 9, 4,
                         21, "transceiver_interface");
   }
   if (nlhs > 4) {

@@ -21,11 +21,11 @@
 #include <string.h>
 
 /* Function Declarations */
-void transceiver_interface(const emlrtStack *sp, real_T Freq_THz,
-                           real_T Comm_dist_init, real_T Skin_thickness,
-                           real_T Tissue_thickness, real_T Vessel_thickness,
-                           real_T blood_speed, real_T bits,
-                           real_T *Const_Tx_real, real_T *Const_Tx_imag,
-                           real_T *Const_Rx_real, real_T *Const_Rx_imag);
+void transceiver_interface(
+    const emlrtStack *sp, real_T Freq_THz, real_T Comm_dist_init,
+    real_T Skin_thickness, real_T Tissue_thickness, real_T Vessel_thickness,
+    real_T blood_speed, real_T mod_order_int, const real_T bits[220000],
+    real_T A, real_T Const_Tx_real[220000], real_T Const_Tx_imag[220000],
+    real_T Const_Rx_real[220000], real_T Const_Rx_imag[220000]);
 
 /* End of code generation (transceiver_interface.h) */

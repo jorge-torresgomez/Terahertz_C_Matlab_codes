@@ -5,7 +5,7 @@
  * File: _coder_transceiver_interface_mex.h
  *
  * MATLAB Coder version            : 5.3
- * C/C++ source code generated on  : 17-Jul-2022 11:18:25
+ * C/C++ source code generated on  : 17-Jul-2022 12:22:44
  */
 
 #ifndef _CODER_TRANSCEIVER_INTERFACE_MEX_H
@@ -28,7 +28,7 @@ emlrtCTX mexFunctionCreateRootTLS(void);
 
 void unsafe_transceiver_interface_mexFunction(int32_T nlhs, mxArray *plhs[4],
                                               int32_T nrhs,
-                                              const mxArray *prhs[8]);
+                                              const mxArray *prhs[9]);
 
 #ifdef __cplusplus
 }
