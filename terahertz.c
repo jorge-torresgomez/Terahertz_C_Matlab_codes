@@ -188,9 +188,10 @@ double pathLossSkin(double comm_dist_Skin, double Freq_THz, double carrier_lambd
      * @param Skin_thickness as the thickness of the Skin in the units of meters 
      * @param Tissue_thickness as the thickness of the Tissue in the units of meters
      * @param Vessel_thickness as the thickness of the Vessel in the units of meters
-     * @return double 
+     * @param blood_speed as the nanosensor speed in the vessel
+     * @return double array for the Doppler term nu
      */
-void doppler(const double Freq_THz, const double Comm_dist, const double Skin_thickness, const double Tissue_thickness, const double Vessel_thickness, double blood_speed, double *nu_doppler)
+void doppler(const double Freq_THz, const double Comm_dist, const double Skin_thickness, const double Tissue_thickness, const double Vessel_thickness, const double blood_speed, double *nu_doppler)
 {
     //angle between the nanosensor and the gateway
     double sin_angle=(Skin_thickness+Tissue_thickness+Vessel_thickness)/Comm_dist;
@@ -198,6 +199,27 @@ void doppler(const double Freq_THz, const double Comm_dist, const double Skin_th
     *nu_doppler=blood_speed*cos_angle*Freq_THz/c_0;    
 }
 
+/**
+     * @brief main function to compute the path loss in dB
+     * 
+     * @param Comm_dist as the distance between the nanosensor and the Gateway 
+     * @param Freq_THz as the carrier frequency in the units of Hertz 
+     * @param Skin_thickness as the thickness of the Skin in the units of meters 
+     * @param Tissue_thickness as the thickness of the Tissue in the units of meters
+     * @param Vessel_thickness as the thickness of the Vessel in the units of meters
+     * @param blood_speed as the nanosensor speed in the vessel
+     * @param mod_order as the modulation order: 2-BPSK, 4-QPSK
+     * @param in_bits as the sequence of bits to communicate   
+     * @param total_bits as the total of bits to communicate
+     * @return Const_Tx_real real component of the emmited constellation points
+     * @return Const_Tx_real imag component of the emmited constellation points
+     * @return Const_Rx_real real component of the received constellation points
+     * @return Const_Rx_real imag component of the received constellation points
+     */
+void transceiver(const double Freq_THz, const double Comm_dist_init, const double Skin_thickness, const double Tissue_thickness, const double Vessel_thickness, const double blood_speed, const int mod_order, const double *in_bits, const int total_bits, double *Const_Tx_real, double *Const_Tx_imag, double *Const_Rx_real, double *Const_Rx_imag)
+{
+    
+}
 /**
      * @brief convert power in the units of Watts to decibels
      * 

@@ -1,0 +1,51 @@
+# CompilerName=mingw64
+# Mode=optim
+ninja_required_version = 1.3
+
+# Basic folders
+root = .
+builddir = $root/build/win64
+matlabdir = C:/Program Files/MATLAB/R2021b
+startdir = C:/Users/jorge/Documents/papers/jenny2022terahertz/code
+
+# Toolchain information
+cc = C:\ProgramData\MATLAB\SupportPackages\R2021b\3P.instrset\mingw_w64.instrset\bin\gcc
+cxx = C:\ProgramData\MATLAB\SupportPackages\R2021b\3P.instrset\mingw_w64.instrset\bin\g++
+linker = C:\ProgramData\MATLAB\SupportPackages\R2021b\3P.instrset\mingw_w64.instrset\bin\gcc
+linkerxx = C:\ProgramData\MATLAB\SupportPackages\R2021b\3P.instrset\mingw_w64.instrset\bin\g++
+
+cflags =  -c -fexceptions -fno-omit-frame-pointer -m64 -DMATLAB_MEX_FILE  -DMATLAB_MEX_FILE -O2 -fwrapv -DNDEBUG -std=c99 -I "C:\Users\jorge\Documents\papers\jenny2022terahertz\code\codegen\mex\transceiver_interface" -I "C:\Users\jorge\Documents\papers\jenny2022terahertz\code" -I "C:\Users\jorge\Documents\papers\jenny2022terahertz\code\codegen\lib\doppler_interface" -I "C:\Users\jorge\Documents\papers\jenny2022terahertz\code\codegen\mex\transceiver_interface\interface" -I "C:\Program Files\MATLAB\R2021b\extern\include" -I "." -DMODEL=transceiver_interface_mex -D__USE_MINGW_ANSI_STDIO=1  
+
+cxxflags =  -c -fexceptions -fno-omit-frame-pointer -std=c++11 -m64 -DMATLAB_MEX_FILE  -DMATLAB_MEX_FILE -O2 -fwrapv -DNDEBUG -std=c++11 -I "C:\Users\jorge\Documents\papers\jenny2022terahertz\code\codegen\mex\transceiver_interface" -I "C:\Users\jorge\Documents\papers\jenny2022terahertz\code" -I "C:\Users\jorge\Documents\papers\jenny2022terahertz\code\codegen\lib\doppler_interface" -I "C:\Users\jorge\Documents\papers\jenny2022terahertz\code\codegen\mex\transceiver_interface\interface" -I "C:\Program Files\MATLAB\R2021b\extern\include" -I "." -DMODEL=transceiver_interface_mex -D__USE_MINGW_ANSI_STDIO=1  
+
+ldflags =  -m64 -Wl,--no-undefined -shared -static -L"C:\Program Files\MATLAB\R2021b\extern\lib\win64\mingw64" -llibmx -llibmex -llibmat -lm -llibmwlapack -llibmwblas -o "transceiver_interface_mex.mexw64" -llibemlrt -llibcovrt -llibut -llibmwmathutil  "C:\Users\jorge\Documents\papers\jenny2022terahertz\code\codegen\lib\doppler_interface\doppler_interface.lib" -Wl,--version-script,transceiver_interface_mex.map
+
+# Build Rules
+rule cc
+    command = $cc $cflags $in -o $out
+
+rule cxx
+    command = $cxx $cxxflags $in -o $out
+
+rule link
+    command = $linker @$out.rsp $ldflags
+    rspfile = $out.rsp
+    rspfile_content = $in
+
+rule linkxx
+    command = $linkerxx $in $ldflags
+
+# Build
+build $builddir/terahertz.o : cc $startdir/terahertz.c
+build $builddir/transceiver_interface_data.o : cc $root/transceiver_interface_data.c
+build $builddir/rt_nonfinite.o : cc $root/rt_nonfinite.c
+build $builddir/transceiver_interface_initialize.o : cc $root/transceiver_interface_initialize.c
+build $builddir/transceiver_interface_terminate.o : cc $root/transceiver_interface_terminate.c
+build $builddir/transceiver_interface.o : cc $root/transceiver_interface.c
+build $builddir/_coder_transceiver_interface_api.o : cc $root/interface/_coder_transceiver_interface_api.c
+build $builddir/_coder_transceiver_interface_mex.o : cc $root/interface/_coder_transceiver_interface_mex.c
+build $builddir/_coder_transceiver_interface_info.o : cc $root/interface/_coder_transceiver_interface_info.c
+build $builddir/c_mexapi_version.o : cc $matlabdir/extern/version/c_mexapi_version.c
+
+# Link
+build $root\transceiver_interface_mex.mexw64 : link $builddir/terahertz.o $builddir/transceiver_interface_data.o $builddir/rt_nonfinite.o $builddir/transceiver_interface_initialize.o $builddir/transceiver_interface_terminate.o $builddir/transceiver_interface.o $builddir/_coder_transceiver_interface_api.o $builddir/_coder_transceiver_interface_mex.o $builddir/_coder_transceiver_interface_info.o $builddir/c_mexapi_version.o 
