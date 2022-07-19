@@ -5,7 +5,7 @@
  * File: transceiver_interface.h
  *
  * MATLAB Coder version            : 5.3
- * C/C++ source code generated on  : 17-Jul-2022 18:58:57
+ * C/C++ source code generated on  : 19-Jul-2022 09:14:17
  */
 
 #ifndef TRANSCEIVER_INTERFACE_H
@@ -24,10 +24,10 @@ extern "C" {
 extern void transceiver_interface(
     double Freq_THz, double dist_init_x, double Skin_thickness,
     double Tissue_thickness, double Vessel_thickness, double blood_speed,
-    double mod_order_int, const double bits[128000], double bit_rate, double A,
-    double Const_Tx_real[128000], double Const_Tx_imag[128000],
-    double Const_Rx_real[128000], double Const_Rx_imag[128000],
-    double nanosensor_pos_x[128000]);
+    double mod_order_int, const double bits[32000], double bit_rate, double A,
+    double Const_Tx_real[32000], double Const_Tx_imag[32000],
+    double Const_Rx_real[32000], double Const_Rx_imag[32000],
+    double nanosensor_pos_x[32000]);
 
 #ifdef __cplusplus
 }
