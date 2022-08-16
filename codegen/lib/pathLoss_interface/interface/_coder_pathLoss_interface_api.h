@@ -5,7 +5,7 @@
  * File: _coder_pathLoss_interface_api.h
  *
  * MATLAB Coder version            : 5.3
- * C/C++ source code generated on  : 10-Aug-2022 15:27:07
+ * C/C++ source code generated on  : 16-Aug-2022 14:04:52
  */
 
 #ifndef _CODER_PATHLOSS_INTERFACE_API_H
