@@ -5,7 +5,7 @@
  * File: doppler_interface_types.h
  *
  * MATLAB Coder version            : 5.3
- * C/C++ source code generated on  : 16-Aug-2022 14:05:12
+ * C/C++ source code generated on  : 16-Aug-2022 14:10:01
  */
 
 #ifndef DOPPLER_INTERFACE_TYPES_H
