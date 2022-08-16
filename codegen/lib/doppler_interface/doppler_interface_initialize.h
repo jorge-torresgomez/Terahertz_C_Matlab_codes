@@ -5,7 +5,7 @@
  * File: doppler_interface_initialize.h
  *
  * MATLAB Coder version            : 5.3
- * C/C++ source code generated on  : 16-Jul-2022 21:54:18
+ * C/C++ source code generated on  : 10-Aug-2022 15:27:18
  */
 
 #ifndef DOPPLER_INTERFACE_INITIALIZE_H

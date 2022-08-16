@@ -20,11 +20,9 @@ real_T doppler_interface(const emlrtStack *sp, real_T Freq_THz,
                          real_T Tissue_thickness, real_T Vessel_thickness,
                          real_T blood_speed)
 {
-  real_T nu_doppler;
   (void)sp;
-  doppler(Freq_THz, Comm_dist, Skin_thickness, Tissue_thickness,
-          Vessel_thickness, blood_speed, &nu_doppler);
-  return nu_doppler;
+  return doppler(Freq_THz, Comm_dist, Skin_thickness, Tissue_thickness,
+                 Vessel_thickness, blood_speed);
 }
 
 /* End of code generation (doppler_interface.c) */
