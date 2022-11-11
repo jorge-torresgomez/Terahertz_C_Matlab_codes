@@ -227,7 +227,7 @@ void transceiver(const double Freq_THz, const double dist_init_x, const double S
     double g_d = 0;//to evaluate the channel gain with time
     double nu = 0; //to evaluate the doppler term nu
     double doppler_phase = 0; //to evaluate the doppler phase
-    double t = 0; //time evolution of the process
+    double t_time = 0; //time evolution of the process
     double mag = 0; //to evaluate the magnitude of received constellation points
     double theta = 0; //to evaluate the phase of received constellation points
 
@@ -250,23 +250,25 @@ void transceiver(const double Freq_THz, const double dist_init_x, const double S
 
         //channel transmission
         //computing the nanosensor position in the x axis
-        nanosensor_pos_x[i] = -dist_init_x + blood_speed*i/bit_rate;
+        nanosensor_pos_x[i] = -dist_init_x + blood_speed*t_time;
         //computing the comm. distance between nanosensor and the gateway with time
         comm_dist=sqrt(pow(nanosensor_pos_x[i],2)+pow(Skin_thickness+Tissue_thickness+Vessel_thickness,2));
         //computing the path Loss
         path_Loss=pathLoss(Freq_THz, comm_dist, Skin_thickness, Tissue_thickness, Vessel_thickness);
         //computing the doppler effect
         nu=doppler(Freq_THz, comm_dist, Skin_thickness, Tissue_thickness, Vessel_thickness,blood_speed);
-        doppler_phase=2*PI*nu*t;
+        doppler_phase=2*PI*nu*t_time;
         //time evolution of the process
-        t=t+i/bit_rate;
+        t_time=t_time+i/bit_rate;
         //transforming the emmited constellation from Polar to 
         //evaluating the received constellation
         //Const_Rx_real[i] = convertdBToWatt(-path_Loss)*Const_Tx_real[i]*cos(doppler_phase);
         //Const_Rx_imag[i] = convertdBToWatt(-path_Loss)*Const_Tx_real[i]*sin(doppler_phase);
         convertCart2Polar(Const_Tx_real[i],Const_Tx_imag[i],&mag,&theta);
-        Const_Rx_real[i] = mag*convertdBToWatt(-path_Loss)*cos(theta+doppler_phase*t);
-        Const_Rx_imag[i] = mag*convertdBToWatt(-path_Loss)*sin(theta+doppler_phase*t);
+        Const_Rx_real[i] = mag*convertdBToWatt(-path_Loss)*cos(theta+doppler_phase);
+        Const_Rx_imag[i] = mag*convertdBToWatt(-path_Loss)*sin(theta+doppler_phase);
+//         Const_Rx_real[i] = mag*cos(theta+doppler_phase);
+//         Const_Rx_imag[i] = mag*sin(theta+doppler_phase);
     }
 }
 

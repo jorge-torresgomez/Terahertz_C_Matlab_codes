@@ -5,7 +5,7 @@
  * File: _coder_transceiver_interface_api.c
  *
  * MATLAB Coder version            : 5.3
- * C/C++ source code generated on  : 16-Aug-2022 14:10:17
+ * C/C++ source code generated on  : 28-Oct-2022 16:08:16
  */
 
 /* Include Files */
@@ -32,10 +32,10 @@ static real_T b_emlrt_marshallIn(const emlrtStack *sp, const mxArray *u,
                                  const emlrtMsgIdentifier *parentId);
 
 static real_T (*c_emlrt_marshallIn(const emlrtStack *sp, const mxArray *bits,
-                                   const char_T *identifier))[32000];
+                                   const char_T *identifier))[64000];
 
 static real_T (*d_emlrt_marshallIn(const emlrtStack *sp, const mxArray *u,
-                                   const emlrtMsgIdentifier *parentId))[32000];
+                                   const emlrtMsgIdentifier *parentId))[64000];
 
 static real_T e_emlrt_marshallIn(const emlrtStack *sp, const mxArray *src,
                                  const emlrtMsgIdentifier *msgId);
@@ -43,10 +43,10 @@ static real_T e_emlrt_marshallIn(const emlrtStack *sp, const mxArray *src,
 static real_T emlrt_marshallIn(const emlrtStack *sp, const mxArray *Freq_THz,
                                const char_T *identifier);
 
-static const mxArray *emlrt_marshallOut(const real_T u[32000]);
+static const mxArray *emlrt_marshallOut(const real_T u[64000]);
 
 static real_T (*f_emlrt_marshallIn(const emlrtStack *sp, const mxArray *src,
-                                   const emlrtMsgIdentifier *msgId))[32000];
+                                   const emlrtMsgIdentifier *msgId))[64000];
 
 /* Function Definitions */
 /*
@@ -68,13 +68,13 @@ static real_T b_emlrt_marshallIn(const emlrtStack *sp, const mxArray *u,
  * Arguments    : const emlrtStack *sp
  *                const mxArray *bits
  *                const char_T *identifier
- * Return Type  : real_T (*)[32000]
+ * Return Type  : real_T (*)[64000]
  */
 static real_T (*c_emlrt_marshallIn(const emlrtStack *sp, const mxArray *bits,
-                                   const char_T *identifier))[32000]
+                                   const char_T *identifier))[64000]
 {
   emlrtMsgIdentifier thisId;
-  real_T(*y)[32000];
+  real_T(*y)[64000];
   thisId.fIdentifier = (const char_T *)identifier;
   thisId.fParent = NULL;
   thisId.bParentIsCell = false;
@@ -87,12 +87,12 @@ static real_T (*c_emlrt_marshallIn(const emlrtStack *sp, const mxArray *bits,
  * Arguments    : const emlrtStack *sp
  *                const mxArray *u
  *                const emlrtMsgIdentifier *parentId
- * Return Type  : real_T (*)[32000]
+ * Return Type  : real_T (*)[64000]
  */
 static real_T (*d_emlrt_marshallIn(const emlrtStack *sp, const mxArray *u,
-                                   const emlrtMsgIdentifier *parentId))[32000]
+                                   const emlrtMsgIdentifier *parentId))[64000]
 {
-  real_T(*y)[32000];
+  real_T(*y)[64000];
   y = f_emlrt_marshallIn(sp, emlrtAlias(u), parentId);
   emlrtDestroyArray(&u);
   return y;
@@ -136,13 +136,13 @@ static real_T emlrt_marshallIn(const emlrtStack *sp, const mxArray *Freq_THz,
 }
 
 /*
- * Arguments    : const real_T u[32000]
+ * Arguments    : const real_T u[64000]
  * Return Type  : const mxArray *
  */
-static const mxArray *emlrt_marshallOut(const real_T u[32000])
+static const mxArray *emlrt_marshallOut(const real_T u[64000])
 {
   static const int32_T iv[2] = {0, 0};
-  static const int32_T iv1[2] = {1, 32000};
+  static const int32_T iv1[2] = {1, 64000};
   const mxArray *m;
   const mxArray *y;
   y = NULL;
@@ -157,16 +157,16 @@ static const mxArray *emlrt_marshallOut(const real_T u[32000])
  * Arguments    : const emlrtStack *sp
  *                const mxArray *src
  *                const emlrtMsgIdentifier *msgId
- * Return Type  : real_T (*)[32000]
+ * Return Type  : real_T (*)[64000]
  */
 static real_T (*f_emlrt_marshallIn(const emlrtStack *sp, const mxArray *src,
-                                   const emlrtMsgIdentifier *msgId))[32000]
+                                   const emlrtMsgIdentifier *msgId))[64000]
 {
-  static const int32_T dims = 32000;
-  real_T(*ret)[32000];
+  static const int32_T dims = 64000;
+  real_T(*ret)[64000];
   emlrtCheckBuiltInR2012b((emlrtCTX)sp, msgId, src, (const char_T *)"double",
                           false, 1U, (void *)&dims);
-  ret = (real_T(*)[32000])emlrtMxGetData(src);
+  ret = (real_T(*)[64000])emlrtMxGetData(src);
   emlrtDestroyArray(&src);
   return ret;
 }
@@ -185,12 +185,12 @@ void transceiver_interface_api(const mxArray *const prhs[10], int32_T nlhs,
       NULL, /* tls */
       NULL  /* prev */
   };
-  real_T(*Const_Rx_imag)[32000];
-  real_T(*Const_Rx_real)[32000];
-  real_T(*Const_Tx_imag)[32000];
-  real_T(*Const_Tx_real)[32000];
-  real_T(*bits)[32000];
-  real_T(*nanosensor_pos_x)[32000];
+  real_T(*Const_Rx_imag)[64000];
+  real_T(*Const_Rx_real)[64000];
+  real_T(*Const_Tx_imag)[64000];
+  real_T(*Const_Tx_real)[64000];
+  real_T(*bits)[64000];
+  real_T(*nanosensor_pos_x)[64000];
   real_T A;
   real_T Freq_THz;
   real_T Skin_thickness;
@@ -201,11 +201,11 @@ void transceiver_interface_api(const mxArray *const prhs[10], int32_T nlhs,
   real_T dist_init_x;
   real_T mod_order_int;
   st.tls = emlrtRootTLSGlobal;
-  Const_Tx_real = (real_T(*)[32000])mxMalloc(sizeof(real_T[32000]));
-  Const_Tx_imag = (real_T(*)[32000])mxMalloc(sizeof(real_T[32000]));
-  Const_Rx_real = (real_T(*)[32000])mxMalloc(sizeof(real_T[32000]));
-  Const_Rx_imag = (real_T(*)[32000])mxMalloc(sizeof(real_T[32000]));
-  nanosensor_pos_x = (real_T(*)[32000])mxMalloc(sizeof(real_T[32000]));
+  Const_Tx_real = (real_T(*)[64000])mxMalloc(sizeof(real_T[64000]));
+  Const_Tx_imag = (real_T(*)[64000])mxMalloc(sizeof(real_T[64000]));
+  Const_Rx_real = (real_T(*)[64000])mxMalloc(sizeof(real_T[64000]));
+  Const_Rx_imag = (real_T(*)[64000])mxMalloc(sizeof(real_T[64000]));
+  nanosensor_pos_x = (real_T(*)[64000])mxMalloc(sizeof(real_T[64000]));
   /* Marshall function inputs */
   Freq_THz = emlrt_marshallIn(&st, emlrtAliasP(prhs[0]), "Freq_THz");
   dist_init_x = emlrt_marshallIn(&st, emlrtAliasP(prhs[1]), "dist_init_x");
