@@ -81,7 +81,7 @@ double pathLoss(const double Freq_THz, const double Comm_dist, const double Skin
     double Tissue_pathLoss = pathLossTissue(comm_dist_Tissue, Freq_THz, carrier_lambda);
     double Skin_pathLoss = pathLossSkin(comm_dist_Skin, Freq_THz, carrier_lambda);
 
-    return Vessel_pathLoss;// Vessel_pathLoss+Tissue_pathLoss+Skin_pathLoss;
+    return Tissue_pathLoss;//Vessel_pathLoss+Tissue_pathLoss+Skin_pathLoss;
     
 }
 
@@ -96,7 +96,7 @@ double pathLoss(const double Freq_THz, const double Comm_dist, const double Skin
 
 double pathLossVessel(double comm_dist_Vessel, double Freq_THz, double carrier_lambda)
 {    
-    // refractiveindex
+    // refractiv index
     double complex sum1 = (EPSILON_1_BLOOD - EPSILON_2_BLOOD) / (1.0 + I * (2*PI*Freq_THz) * TAU_1_BLOOD);
     double complex sum2 = (EPSILON_2_BLOOD - EPSILON_INF_BLOOD) / (1.0 + I * (2*PI*Freq_THz) * TAU_2_BLOOD);
     double complex epsilon_r = EPSILON_INF_BLOOD + sum1 + sum2;
@@ -134,8 +134,8 @@ double pathLossTissue(double comm_dist_Tissue, double Freq_THz, double carrier_l
     double complex epsilon_r = EPSILON_INF_DERMIS + sum1 + sum2 - I * SIGMA_DERMIS / ((2*PI*Freq_THz) * EPSILON_0);
 
     double complex n = sqrt(epsilon_r);
-    double n_1 = creal(n);
-    double n_2 = -cimag(n);
+    double n_1 = creal(n); 
+    double n_2 = -cimag(n); //ERROR WHEN COMPILING WITH MATLAB; RETURNS 0
 
     //computing the effective Wavelength
     double lambda_g = carrier_lambda/n_1;

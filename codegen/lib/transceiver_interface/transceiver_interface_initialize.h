@@ -4,8 +4,8 @@
  * government, commercial, or other organizational use.
  * File: transceiver_interface_initialize.h
  *
- * MATLAB Coder version            : 5.3
- * C/C++ source code generated on  : 28-Oct-2022 16:08:16
+ * MATLAB Coder version            : 5.5
+ * C/C++ source code generated on  : 06-Jan-2023 23:11:47
  */
 
 #ifndef TRANSCEIVER_INTERFACE_INITIALIZE_H

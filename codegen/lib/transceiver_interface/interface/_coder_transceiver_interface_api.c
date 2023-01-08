@@ -4,8 +4,8 @@
  * government, commercial, or other organizational use.
  * File: _coder_transceiver_interface_api.c
  *
- * MATLAB Coder version            : 5.3
- * C/C++ source code generated on  : 28-Oct-2022 16:08:16
+ * MATLAB Coder version            : 5.5
+ * C/C++ source code generated on  : 06-Jan-2023 23:11:47
  */
 
 /* Include Files */
@@ -18,7 +18,7 @@ emlrtCTX emlrtRootTLSGlobal = NULL;
 emlrtContext emlrtContextGlobal = {
     true,                                                 /* bFirstTime */
     false,                                                /* bInitialized */
-    131611U,                                              /* fVersionInfo */
+    131627U,                                              /* fVersionInfo */
     NULL,                                                 /* fErrorFunction */
     "transceiver_interface",                              /* fFunctionName */
     NULL,                                                 /* fRTCallStack */
@@ -109,8 +109,8 @@ static real_T e_emlrt_marshallIn(const emlrtStack *sp, const mxArray *src,
 {
   static const int32_T dims = 0;
   real_T ret;
-  emlrtCheckBuiltInR2012b((emlrtCTX)sp, msgId, src, (const char_T *)"double",
-                          false, 0U, (void *)&dims);
+  emlrtCheckBuiltInR2012b((emlrtConstCTX)sp, msgId, src, "double", false, 0U,
+                          (const void *)&dims);
   ret = *(real_T *)emlrtMxGetData(src);
   emlrtDestroyArray(&src);
   return ret;
@@ -164,8 +164,8 @@ static real_T (*f_emlrt_marshallIn(const emlrtStack *sp, const mxArray *src,
 {
   static const int32_T dims = 64000;
   real_T(*ret)[64000];
-  emlrtCheckBuiltInR2012b((emlrtCTX)sp, msgId, src, (const char_T *)"double",
-                          false, 1U, (void *)&dims);
+  emlrtCheckBuiltInR2012b((emlrtConstCTX)sp, msgId, src, "double", false, 1U,
+                          (const void *)&dims);
   ret = (real_T(*)[64000])emlrtMxGetData(src);
   emlrtDestroyArray(&src);
   return ret;
@@ -255,7 +255,6 @@ void transceiver_interface_atexit(void)
   mexFunctionCreateRootTLS();
   st.tls = emlrtRootTLSGlobal;
   emlrtEnterRtStackR2012b(&st);
-  emlrtLeaveRtStackR2012b(&st);
   emlrtDestroyRootTLS(&emlrtRootTLSGlobal);
   transceiver_interface_xil_terminate();
   transceiver_interface_xil_shutdown();
@@ -286,13 +285,6 @@ void transceiver_interface_initialize(void)
  */
 void transceiver_interface_terminate(void)
 {
-  emlrtStack st = {
-      NULL, /* site */
-      NULL, /* tls */
-      NULL  /* prev */
-  };
-  st.tls = emlrtRootTLSGlobal;
-  emlrtLeaveRtStackR2012b(&st);
   emlrtDestroyRootTLS(&emlrtRootTLSGlobal);
 }
 

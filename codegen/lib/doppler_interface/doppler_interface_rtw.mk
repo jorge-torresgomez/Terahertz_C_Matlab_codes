@@ -2,7 +2,7 @@
 ## Makefile generated for component 'doppler_interface'. 
 ## 
 ## Makefile     : doppler_interface_rtw.mk
-## Generated on : Fri Oct 28 13:59:16 2022
+## Generated on : Fri Nov 11 14:10:25 2022
 ## Final product: ./doppler_interface.lib
 ## Product type : static-library
 ## 
@@ -21,8 +21,8 @@
 
 PRODUCT_NAME              = doppler_interface
 MAKEFILE                  = doppler_interface_rtw.mk
-MATLAB_ROOT               = C:/PROGRA~1/MATLAB/R2021b
-MATLAB_BIN                = C:/PROGRA~1/MATLAB/R2021b/bin
+MATLAB_ROOT               = C:/PROGRA~1/MATLAB/R2022b
+MATLAB_BIN                = C:/PROGRA~1/MATLAB/R2022b/bin
 MATLAB_ARCH_BIN           = $(MATLAB_BIN)/win64
 START_DIR                 = C:/Users/jorge/Documents/papers/jenny2022terahertz/code
 TGT_FCN_LIB               = ISO_C
@@ -42,7 +42,7 @@ MODELLIB                  = doppler_interface.lib
 
 # Toolchain Name:          MinGW64 | gmake (64-bit Windows)
 # Supported Version(s):    6.x
-# ToolchainInfo Version:   2021b
+# ToolchainInfo Version:   2022b
 # Specification Revision:  1.0
 # 
 #-------------------------------------------

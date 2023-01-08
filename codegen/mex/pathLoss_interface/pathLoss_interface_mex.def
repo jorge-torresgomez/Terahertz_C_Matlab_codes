@@ -1,0 +1,9 @@
+LIBRARY pathLoss_interface_mex.mexw64
+EXPORTS
+mexFunction
+mexfilerequiredapiversion
+emlrtMexFcnProperties
+pathLoss_interface
+pathLoss_interface_initialize
+pathLoss_interface_terminate
+pathLoss_interface_atexit

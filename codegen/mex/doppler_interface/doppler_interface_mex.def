@@ -1,0 +1,9 @@
+LIBRARY doppler_interface_mex.mexw64
+EXPORTS
+mexFunction
+mexfilerequiredapiversion
+emlrtMexFcnProperties
+doppler_interface
+doppler_interface_initialize
+doppler_interface_terminate
+doppler_interface_atexit

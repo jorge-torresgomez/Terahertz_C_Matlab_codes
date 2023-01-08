@@ -4,8 +4,8 @@
  * government, commercial, or other organizational use.
  * File: _coder_doppler_interface_api.h
  *
- * MATLAB Coder version            : 5.3
- * C/C++ source code generated on  : 28-Oct-2022 16:08:03
+ * MATLAB Coder version            : 5.5
+ * C/C++ source code generated on  : 06-Jan-2023 23:11:38
  */
 
 #ifndef _CODER_DOPPLER_INTERFACE_API_H

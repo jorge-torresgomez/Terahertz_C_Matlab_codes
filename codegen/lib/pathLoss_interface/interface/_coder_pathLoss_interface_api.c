@@ -4,8 +4,8 @@
  * government, commercial, or other organizational use.
  * File: _coder_pathLoss_interface_api.c
  *
- * MATLAB Coder version            : 5.3
- * C/C++ source code generated on  : 28-Oct-2022 16:07:45
+ * MATLAB Coder version            : 5.5
+ * C/C++ source code generated on  : 06-Jan-2023 23:11:29
  */
 
 /* Include Files */
@@ -18,7 +18,7 @@ emlrtCTX emlrtRootTLSGlobal = NULL;
 emlrtContext emlrtContextGlobal = {
     true,                                                 /* bFirstTime */
     false,                                                /* bInitialized */
-    131611U,                                              /* fVersionInfo */
+    131627U,                                              /* fVersionInfo */
     NULL,                                                 /* fErrorFunction */
     "pathLoss_interface",                                 /* fFunctionName */
     NULL,                                                 /* fRTCallStack */
@@ -66,8 +66,8 @@ static real_T c_emlrt_marshallIn(const emlrtStack *sp, const mxArray *src,
 {
   static const int32_T dims = 0;
   real_T ret;
-  emlrtCheckBuiltInR2012b((emlrtCTX)sp, msgId, src, (const char_T *)"double",
-                          false, 0U, (void *)&dims);
+  emlrtCheckBuiltInR2012b((emlrtConstCTX)sp, msgId, src, "double", false, 0U,
+                          (const void *)&dims);
   ret = *(real_T *)emlrtMxGetData(src);
   emlrtDestroyArray(&src);
   return ret;
@@ -154,7 +154,6 @@ void pathLoss_interface_atexit(void)
   mexFunctionCreateRootTLS();
   st.tls = emlrtRootTLSGlobal;
   emlrtEnterRtStackR2012b(&st);
-  emlrtLeaveRtStackR2012b(&st);
   emlrtDestroyRootTLS(&emlrtRootTLSGlobal);
   pathLoss_interface_xil_terminate();
   pathLoss_interface_xil_shutdown();
@@ -185,13 +184,6 @@ void pathLoss_interface_initialize(void)
  */
 void pathLoss_interface_terminate(void)
 {
-  emlrtStack st = {
-      NULL, /* site */
-      NULL, /* tls */
-      NULL  /* prev */
-  };
-  st.tls = emlrtRootTLSGlobal;
-  emlrtLeaveRtStackR2012b(&st);
   emlrtDestroyRootTLS(&emlrtRootTLSGlobal);
 }
 

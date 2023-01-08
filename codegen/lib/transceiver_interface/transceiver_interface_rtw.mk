@@ -2,7 +2,7 @@
 ## Makefile generated for component 'transceiver_interface'. 
 ## 
 ## Makefile     : transceiver_interface_rtw.mk
-## Generated on : Sun Jul 17 18:30:40 2022
+## Generated on : Fri Nov 11 14:10:32 2022
 ## Final product: ./transceiver_interface.lib
 ## Product type : static-library
 ## 
@@ -21,8 +21,8 @@
 
 PRODUCT_NAME              = transceiver_interface
 MAKEFILE                  = transceiver_interface_rtw.mk
-MATLAB_ROOT               = C:/PROGRA~1/MATLAB/R2021b
-MATLAB_BIN                = C:/PROGRA~1/MATLAB/R2021b/bin
+MATLAB_ROOT               = C:/PROGRA~1/MATLAB/R2022b
+MATLAB_BIN                = C:/PROGRA~1/MATLAB/R2022b/bin
 MATLAB_ARCH_BIN           = $(MATLAB_BIN)/win64
 START_DIR                 = C:/Users/jorge/Documents/papers/jenny2022terahertz/code
 TGT_FCN_LIB               = ISO_C
@@ -42,7 +42,7 @@ MODELLIB                  = transceiver_interface.lib
 
 # Toolchain Name:          MinGW64 | gmake (64-bit Windows)
 # Supported Version(s):    6.x
-# ToolchainInfo Version:   2021b
+# ToolchainInfo Version:   2022b
 # Specification Revision:  1.0
 # 
 #-------------------------------------------

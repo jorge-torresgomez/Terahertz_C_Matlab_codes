@@ -4,8 +4,8 @@
  * government, commercial, or other organizational use.
  * File: _coder_transceiver_interface_mex.c
  *
- * MATLAB Coder version            : 5.3
- * C/C++ source code generated on  : 28-Oct-2022 16:08:16
+ * MATLAB Coder version            : 5.5
+ * C/C++ source code generated on  : 06-Jan-2023 23:11:47
  */
 
 /* Include Files */
@@ -38,8 +38,8 @@ void mexFunction(int32_T nlhs, mxArray *plhs[], int32_T nrhs,
  */
 emlrtCTX mexFunctionCreateRootTLS(void)
 {
-  emlrtCreateRootTLSR2021a(&emlrtRootTLSGlobal, &emlrtContextGlobal, NULL, 1,
-                           NULL);
+  emlrtCreateRootTLSR2022a(&emlrtRootTLSGlobal, &emlrtContextGlobal, NULL, 1,
+                           NULL, "windows-1252", true);
   return emlrtRootTLSGlobal;
 }
 
@@ -60,7 +60,7 @@ void unsafe_transceiver_interface_mexFunction(int32_T nlhs, mxArray *plhs[5],
       NULL  /* prev */
   };
   const mxArray *outputs[5];
-  int32_T b_nlhs;
+  int32_T i;
   st.tls = emlrtRootTLSGlobal;
   /* Check for proper number of arguments. */
   if (nrhs != 10) {
@@ -75,11 +75,11 @@ void unsafe_transceiver_interface_mexFunction(int32_T nlhs, mxArray *plhs[5],
   transceiver_interface_api(prhs, nlhs, outputs);
   /* Copy over outputs to the caller. */
   if (nlhs < 1) {
-    b_nlhs = 1;
+    i = 1;
   } else {
-    b_nlhs = nlhs;
+    i = nlhs;
   }
-  emlrtReturnArrays(b_nlhs, &plhs[0], &outputs[0]);
+  emlrtReturnArrays(i, &plhs[0], &outputs[0]);
 }
 
 /*

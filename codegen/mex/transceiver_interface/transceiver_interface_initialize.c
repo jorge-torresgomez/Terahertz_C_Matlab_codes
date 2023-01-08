@@ -15,7 +15,15 @@
 #include "rt_nonfinite.h"
 #include "transceiver_interface_data.h"
 
+/* Function Declarations */
+static void transceiver_interface_once(void);
+
 /* Function Definitions */
+static void transceiver_interface_once(void)
+{
+  mex_InitInfAndNan();
+}
+
 void transceiver_interface_initialize(void)
 {
   static const volatile char_T *emlrtBreakCheckR2012bFlagVar = NULL;
@@ -24,13 +32,14 @@ void transceiver_interface_initialize(void)
       NULL, /* tls */
       NULL  /* prev */
   };
-  mex_InitInfAndNan();
   mexFunctionCreateRootTLS();
-  emlrtBreakCheckR2012bFlagVar = emlrtGetBreakCheckFlagAddressR2012b();
   st.tls = emlrtRootTLSGlobal;
+  emlrtBreakCheckR2012bFlagVar = emlrtGetBreakCheckFlagAddressR2022b(&st);
   emlrtClearAllocCountR2012b(&st, false, 0U, NULL);
   emlrtEnterRtStackR2012b(&st);
-  emlrtFirstTimeR2012b(emlrtRootTLSGlobal);
+  if (emlrtFirstTimeR2012b(emlrtRootTLSGlobal)) {
+    transceiver_interface_once();
+  }
 }
 
 /* End of code generation (transceiver_interface_initialize.c) */

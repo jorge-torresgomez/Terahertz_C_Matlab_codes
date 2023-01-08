@@ -4,8 +4,8 @@
  * government, commercial, or other organizational use.
  * File: _coder_pathLoss_interface_mex.c
  *
- * MATLAB Coder version            : 5.3
- * C/C++ source code generated on  : 28-Oct-2022 16:07:45
+ * MATLAB Coder version            : 5.5
+ * C/C++ source code generated on  : 06-Jan-2023 23:11:29
  */
 
 /* Include Files */
@@ -38,8 +38,8 @@ void mexFunction(int32_T nlhs, mxArray *plhs[], int32_T nrhs,
  */
 emlrtCTX mexFunctionCreateRootTLS(void)
 {
-  emlrtCreateRootTLSR2021a(&emlrtRootTLSGlobal, &emlrtContextGlobal, NULL, 1,
-                           NULL);
+  emlrtCreateRootTLSR2022a(&emlrtRootTLSGlobal, &emlrtContextGlobal, NULL, 1,
+                           NULL, "windows-1252", true);
   return emlrtRootTLSGlobal;
 }
 

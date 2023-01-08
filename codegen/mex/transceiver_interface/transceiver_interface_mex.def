@@ -1,0 +1,9 @@
+LIBRARY transceiver_interface_mex.mexw64
+EXPORTS
+mexFunction
+mexfilerequiredapiversion
+emlrtMexFcnProperties
+transceiver_interface
+transceiver_interface_initialize
+transceiver_interface_terminate
+transceiver_interface_atexit

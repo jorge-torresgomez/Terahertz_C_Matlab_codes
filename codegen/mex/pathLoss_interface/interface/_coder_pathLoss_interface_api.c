@@ -42,8 +42,8 @@ static real_T c_emlrt_marshallIn(const emlrtStack *sp, const mxArray *src,
 {
   static const int32_T dims = 0;
   real_T ret;
-  emlrtCheckBuiltInR2012b((emlrtCTX)sp, msgId, src, (const char_T *)"double",
-                          false, 0U, (void *)&dims);
+  emlrtCheckBuiltInR2012b((emlrtConstCTX)sp, msgId, src, "double", false, 0U,
+                          (const void *)&dims);
   ret = *(real_T *)emlrtMxGetData(src);
   emlrtDestroyArray(&src);
   return ret;
