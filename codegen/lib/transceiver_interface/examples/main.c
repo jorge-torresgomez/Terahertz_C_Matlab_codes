@@ -4,8 +4,8 @@
  * government, commercial, or other organizational use.
  * File: main.c
  *
- * MATLAB Coder version            : 5.3
- * C/C++ source code generated on  : 10-Aug-2022 15:27:32
+ * MATLAB Coder version            : 5.5
+ * C/C++ source code generated on  : 27-Jan-2023 13:20:41
  */
 
 /*************************************************************************/
@@ -39,22 +39,20 @@
 #include "transceiver_interface_terminate.h"
 
 /* Function Declarations */
-static void argInit_8000x1_real_T(double result[8000]);
+static void argInit_64000x1_real_T(double result[64000]);
 
 static double argInit_real_T(void);
 
-static void main_transceiver_interface(void);
-
 /* Function Definitions */
 /*
- * Arguments    : double result[8000]
+ * Arguments    : double result[64000]
  * Return Type  : void
  */
-static void argInit_8000x1_real_T(double result[8000])
+static void argInit_64000x1_real_T(double result[64000])
 {
   int idx0;
   /* Loop over the array to initialize each element. */
-  for (idx0 = 0; idx0 < 8000; idx0++) {
+  for (idx0 = 0; idx0 < 64000; idx0++) {
     /* Set the value of the array element.
 Change this value to the value that the application requires. */
     result[idx0] = argInit_real_T();
@@ -68,30 +66,6 @@ Change this value to the value that the application requires. */
 static double argInit_real_T(void)
 {
   return 0.0;
-}
-
-/*
- * Arguments    : void
- * Return Type  : void
- */
-static void main_transceiver_interface(void)
-{
-  static double Const_Tx_imag[8000];
-  static double Const_Tx_real[8000];
-  static double dv[8000];
-  double Const_Rx_imag[8000];
-  double Const_Rx_real[8000];
-  double nanosensor_pos_x[8000];
-  double Freq_THz_tmp;
-  /* Initialize function 'transceiver_interface' input arguments. */
-  Freq_THz_tmp = argInit_real_T();
-  /* Initialize function input argument 'bits'. */
-  /* Call the entry-point 'transceiver_interface'. */
-  argInit_8000x1_real_T(dv);
-  transceiver_interface(
-      Freq_THz_tmp, Freq_THz_tmp, Freq_THz_tmp, Freq_THz_tmp, Freq_THz_tmp,
-      Freq_THz_tmp, Freq_THz_tmp, dv, Freq_THz_tmp, Freq_THz_tmp, Const_Tx_real,
-      Const_Tx_imag, Const_Rx_real, Const_Rx_imag, nanosensor_pos_x);
 }
 
 /*
@@ -112,6 +86,30 @@ You can call entry-point functions multiple times. */
 You do not need to do this more than one time. */
   transceiver_interface_terminate();
   return 0;
+}
+
+/*
+ * Arguments    : void
+ * Return Type  : void
+ */
+void main_transceiver_interface(void)
+{
+  static double Const_Rx_imag[64000];
+  static double Const_Rx_real[64000];
+  static double Const_Tx_imag[64000];
+  static double Const_Tx_real[64000];
+  static double dv[64000];
+  static double nanosensor_pos_x[64000];
+  double Freq_THz_tmp;
+  /* Initialize function 'transceiver_interface' input arguments. */
+  Freq_THz_tmp = argInit_real_T();
+  /* Initialize function input argument 'bits'. */
+  /* Call the entry-point 'transceiver_interface'. */
+  argInit_64000x1_real_T(dv);
+  transceiver_interface(
+      Freq_THz_tmp, Freq_THz_tmp, Freq_THz_tmp, Freq_THz_tmp, Freq_THz_tmp,
+      Freq_THz_tmp, Freq_THz_tmp, dv, Freq_THz_tmp, Freq_THz_tmp, Const_Tx_real,
+      Const_Tx_imag, Const_Rx_real, Const_Rx_imag, nanosensor_pos_x);
 }
 
 /*

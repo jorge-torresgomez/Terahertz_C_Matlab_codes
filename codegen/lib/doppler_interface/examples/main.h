@@ -4,8 +4,8 @@
  * government, commercial, or other organizational use.
  * File: main.h
  *
- * MATLAB Coder version            : 5.3
- * C/C++ source code generated on  : 10-Aug-2022 15:27:18
+ * MATLAB Coder version            : 5.5
+ * C/C++ source code generated on  : 27-Jan-2023 13:20:36
  */
 
 /*************************************************************************/
@@ -47,6 +47,8 @@ extern "C" {
 
 /* Function Declarations */
 extern int main(int argc, char **argv);
+
+extern void main_doppler_interface(void);
 
 #ifdef __cplusplus
 }

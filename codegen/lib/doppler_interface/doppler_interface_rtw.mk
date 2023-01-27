@@ -2,7 +2,7 @@
 ## Makefile generated for component 'doppler_interface'. 
 ## 
 ## Makefile     : doppler_interface_rtw.mk
-## Generated on : Fri Nov 11 14:10:25 2022
+## Generated on : Fri Jan 27 13:20:39 2023
 ## Final product: ./doppler_interface.lib
 ## Product type : static-library
 ## 
@@ -24,7 +24,7 @@ MAKEFILE                  = doppler_interface_rtw.mk
 MATLAB_ROOT               = C:/PROGRA~1/MATLAB/R2022b
 MATLAB_BIN                = C:/PROGRA~1/MATLAB/R2022b/bin
 MATLAB_ARCH_BIN           = $(MATLAB_BIN)/win64
-START_DIR                 = C:/Users/jorge/Documents/papers/jenny2022terahertz/code
+START_DIR                 = C:/Users/jorge/Documents/code/Terahertz_C_Matlab_codes
 TGT_FCN_LIB               = ISO_C
 SOLVER_OBJ                = 
 CLASSIC_INTERFACE         = 0

@@ -5,7 +5,7 @@
  * File: pathLoss_interface_terminate.h
  *
  * MATLAB Coder version            : 5.5
- * C/C++ source code generated on  : 06-Jan-2023 23:11:29
+ * C/C++ source code generated on  : 27-Jan-2023 13:20:22
  */
 
 #ifndef PATHLOSS_INTERFACE_TERMINATE_H

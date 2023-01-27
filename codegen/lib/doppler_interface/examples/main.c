@@ -4,8 +4,8 @@
  * government, commercial, or other organizational use.
  * File: main.c
  *
- * MATLAB Coder version            : 5.3
- * C/C++ source code generated on  : 10-Aug-2022 15:27:18
+ * MATLAB Coder version            : 5.5
+ * C/C++ source code generated on  : 27-Jan-2023 13:20:36
  */
 
 /*************************************************************************/
@@ -41,8 +41,6 @@
 /* Function Declarations */
 static double argInit_real_T(void);
 
-static void main_doppler_interface(void);
-
 /* Function Definitions */
 /*
  * Arguments    : void
@@ -51,20 +49,6 @@ static void main_doppler_interface(void);
 static double argInit_real_T(void)
 {
   return 0.0;
-}
-
-/*
- * Arguments    : void
- * Return Type  : void
- */
-static void main_doppler_interface(void)
-{
-  double Freq_THz_tmp;
-  /* Initialize function 'doppler_interface' input arguments. */
-  Freq_THz_tmp = argInit_real_T();
-  /* Call the entry-point 'doppler_interface'. */
-  Freq_THz_tmp = doppler_interface(Freq_THz_tmp, Freq_THz_tmp, Freq_THz_tmp,
-                                   Freq_THz_tmp, Freq_THz_tmp, Freq_THz_tmp);
 }
 
 /*
@@ -85,6 +69,20 @@ You can call entry-point functions multiple times. */
 You do not need to do this more than one time. */
   doppler_interface_terminate();
   return 0;
+}
+
+/*
+ * Arguments    : void
+ * Return Type  : void
+ */
+void main_doppler_interface(void)
+{
+  double Freq_THz_tmp;
+  /* Initialize function 'doppler_interface' input arguments. */
+  Freq_THz_tmp = argInit_real_T();
+  /* Call the entry-point 'doppler_interface'. */
+  Freq_THz_tmp = doppler_interface(Freq_THz_tmp, Freq_THz_tmp, Freq_THz_tmp,
+                                   Freq_THz_tmp, Freq_THz_tmp, Freq_THz_tmp);
 }
 
 /*

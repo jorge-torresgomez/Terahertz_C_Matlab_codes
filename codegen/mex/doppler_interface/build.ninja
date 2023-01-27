@@ -6,7 +6,7 @@ ninja_required_version = 1.3
 root = .
 builddir = $root/build/win64
 matlabdir = C:/Program Files/MATLAB/R2022b
-startdir = C:/Users/jorge/Documents/papers/jenny2022terahertz/code
+startdir = C:/Users/jorge/Documents/code/Terahertz_C_Matlab_codes
 
 # Toolchain information
 cc = C:\ProgramData\MATLAB\SupportPackages\R2022b\3P.instrset\mingw_w64.instrset\bin\gcc
@@ -14,13 +14,13 @@ cxx = C:\ProgramData\MATLAB\SupportPackages\R2022b\3P.instrset\mingw_w64.instrse
 linker = C:\ProgramData\MATLAB\SupportPackages\R2022b\3P.instrset\mingw_w64.instrset\bin\gcc
 linkerxx = C:\ProgramData\MATLAB\SupportPackages\R2022b\3P.instrset\mingw_w64.instrset\bin\g++
 
-cflags =  -c -fexceptions -fno-omit-frame-pointer -m64 -DMATLAB_MEX_FILE  -DMATLAB_MEX_FILE -O2 -fwrapv -DNDEBUG -std=c99 -I "C:\Users\jorge\Documents\papers\jenny2022terahertz\code\codegen\mex\doppler_interface" -I "C:\Users\jorge\Documents\papers\jenny2022terahertz\code" -I "C:\Users\jorge\Documents\papers\jenny2022terahertz\code\codegen\lib\doppler_interface" -I "C:\Users\jorge\Documents\papers\jenny2022terahertz\code\codegen\mex\doppler_interface\interface" -I "C:\Program Files\MATLAB\R2022b\extern\include" -I "." -DMODEL=doppler_interface_mex -D__USE_MINGW_ANSI_STDIO=1  
+cflags =  -c -fexceptions -fno-omit-frame-pointer -m64 -DMATLAB_MEX_FILE  -DMATLAB_MEX_FILE -O2 -fwrapv -DNDEBUG -std=c99 -I "C:\Users\jorge\Documents\code\Terahertz_C_Matlab_codes\codegen\mex\doppler_interface" -I "C:\Users\jorge\Documents\code\Terahertz_C_Matlab_codes" -I "C:\Users\jorge\Documents\code\Terahertz_C_Matlab_codes\codegen\lib\doppler_interface" -I "C:\Users\jorge\Documents\code\Terahertz_C_Matlab_codes\codegen\mex\doppler_interface\interface" -I "C:\Program Files\MATLAB\R2022b\extern\include" -I "." -DMODEL=doppler_interface_mex -D__USE_MINGW_ANSI_STDIO=1  
 
-cxxflags =  -c -fexceptions -fno-omit-frame-pointer -std=c++11 -m64 -DMATLAB_MEX_FILE  -DMATLAB_MEX_FILE -O2 -fwrapv -DNDEBUG -std=c++11 -I "C:\Users\jorge\Documents\papers\jenny2022terahertz\code\codegen\mex\doppler_interface" -I "C:\Users\jorge\Documents\papers\jenny2022terahertz\code" -I "C:\Users\jorge\Documents\papers\jenny2022terahertz\code\codegen\lib\doppler_interface" -I "C:\Users\jorge\Documents\papers\jenny2022terahertz\code\codegen\mex\doppler_interface\interface" -I "C:\Program Files\MATLAB\R2022b\extern\include" -I "." -DMODEL=doppler_interface_mex -D__USE_MINGW_ANSI_STDIO=1  
+cxxflags =  -c -fexceptions -fno-omit-frame-pointer -std=c++11 -m64 -DMATLAB_MEX_FILE  -DMATLAB_MEX_FILE -O2 -fwrapv -DNDEBUG -std=c++11 -I "C:\Users\jorge\Documents\code\Terahertz_C_Matlab_codes\codegen\mex\doppler_interface" -I "C:\Users\jorge\Documents\code\Terahertz_C_Matlab_codes" -I "C:\Users\jorge\Documents\code\Terahertz_C_Matlab_codes\codegen\lib\doppler_interface" -I "C:\Users\jorge\Documents\code\Terahertz_C_Matlab_codes\codegen\mex\doppler_interface\interface" -I "C:\Program Files\MATLAB\R2022b\extern\include" -I "." -DMODEL=doppler_interface_mex -D__USE_MINGW_ANSI_STDIO=1  
 
 ldflags =  -m64 -Wl,--no-undefined -shared -static -L"C:\Program Files\MATLAB\R2022b\extern\lib\win64\mingw64" -llibmx -llibmex -llibmat -lm -llibmwlapack -llibmwblas -o "doppler_interface_mex.mexw64" -llibemlrt -llibcovrt -llibut -llibmwmathutil  doppler_interface_mex.def
 
-linkobjs =  "C:\Users\jorge\Documents\papers\jenny2022terahertz\code\codegen\lib\doppler_interface\doppler_interface.lib"
+linkobjs =  "C:\Users\jorge\Documents\code\Terahertz_C_Matlab_codes\codegen\lib\doppler_interface\doppler_interface.lib"
 
 # Build Rules
 rule cc

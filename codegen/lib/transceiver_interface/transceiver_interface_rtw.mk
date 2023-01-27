@@ -2,7 +2,7 @@
 ## Makefile generated for component 'transceiver_interface'. 
 ## 
 ## Makefile     : transceiver_interface_rtw.mk
-## Generated on : Fri Nov 11 14:10:32 2022
+## Generated on : Fri Jan 27 13:20:44 2023
 ## Final product: ./transceiver_interface.lib
 ## Product type : static-library
 ## 
@@ -24,7 +24,7 @@ MAKEFILE                  = transceiver_interface_rtw.mk
 MATLAB_ROOT               = C:/PROGRA~1/MATLAB/R2022b
 MATLAB_BIN                = C:/PROGRA~1/MATLAB/R2022b/bin
 MATLAB_ARCH_BIN           = $(MATLAB_BIN)/win64
-START_DIR                 = C:/Users/jorge/Documents/papers/jenny2022terahertz/code
+START_DIR                 = C:/Users/jorge/Documents/code/Terahertz_C_Matlab_codes
 TGT_FCN_LIB               = ISO_C
 SOLVER_OBJ                = 
 CLASSIC_INTERFACE         = 0
